@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/giovani/Documentos/TheBest/TheBest/TheBest.csproj": {}
+    "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj": {}
   },
   "projects": {
-    "/home/giovani/Documentos/TheBest/TheBest/TheBest.csproj": {
+    "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/giovani/Documentos/TheBest/TheBest/TheBest.csproj",
+        "projectUniqueName": "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj",
         "projectName": "TheBest",
-        "projectPath": "/home/giovani/Documentos/TheBest/TheBest/TheBest.csproj",
+        "projectPath": "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj",
         "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/home/giovani/Documentos/TheBest/TheBest/obj/",
+        "outputPath": "/home/giovani/Documentos/GitHub/API_The-BEst/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/root/.nuget/NuGet/NuGet.Config"
