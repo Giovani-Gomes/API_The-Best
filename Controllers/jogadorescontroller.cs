@@ -11,31 +11,20 @@ public class JogadoresController : ControllerBase
 
     [HttpGet]
     public ActionResult<bool> Get(){
-        
         addJogadores();
         return true;
-        
-        
-    }
+    } 
 
     [HttpPost]
     public ActionResult<bool> createJogador(Jogadores jogadores){
          if(jogadores== null){
             return StatusCode(204," Valores inválidos! ");
         }
-        else if(jogadores.Nome == null || jogadores.Nome == "" || jogadores.Clube == null || jogadores.Clube == ""|| jogadores.Nacionalidade == null || jogadores.Nacionalidade == ""|| jogadores.Idade ==  null ||
-        jogadores.Idade >= 18 ){
+        else if(jogadores.Nome == null || jogadores.Nome == "" || jogadores.Clube == null || jogadores.Clube == ""|| jogadores.Nacionalidade == null || jogadores.Nacionalidade == ""|| jogadores.Idade == null ||jogadores.Idade >= 18 ){
             return StatusCode(204, "É necessário informar Título ou o Ano de Lançamento");
         }
         listaJogadores.Add(jogadores);
         return true;
-    }
-
-    [HttpGet("add")]
-    public ActionResult<string> getTop(){   
-        
-        addJogadores();
-        return Ok("Jogadores adicionados");
     }
 
     [HttpGet("{idJ}")]
