@@ -6,7 +6,8 @@ namespace TheBest.Controllers;
 [Route("[controller]")]
 
 public class JogadoresController : ControllerBase
-{
+{   
+    
     private static List<Jogadores> listaJogadores = new List<Jogadores>();
 
     [HttpGet]
@@ -20,11 +21,19 @@ public class JogadoresController : ControllerBase
          if(jogadores== null){
             return StatusCode(204," Valores inválidos! ");
         }
-        else if(jogadores.Nome == null || jogadores.Nome == "" || jogadores.Clube == null || jogadores.Clube == ""|| jogadores.Nacionalidade == null || jogadores.Nacionalidade == ""|| jogadores.Idade == null ||jogadores.Idade >= 18 ){
-            return StatusCode(204, "É necessário informar Título ou o Ano de Lançamento");
+        else if(jogadores.Nome == null || jogadores.Nome == "" || jogadores.Clube == null || jogadores.Clube == ""|| jogadores.Nacionalidade == null || jogadores.Nacionalidade == ""|| jogadores.Idade == null ||jogadores.Idade <= 18 ){
+            return StatusCode(204, "É necessário informar Todos os campos corretamente");
         }
-        listaJogadores.Add(jogadores);
-        return true;
+    for (int i = 1; i == 10; i++){
+        if (listaJogadores[i] == null || i != 10){
+            jogadores.IdJ = i;
+            listaJogadores.Add(jogadores);   
+        }else{
+            return StatusCode(204,"Lista de jogadores cheia");
+        }
+    }
+        
+        return Ok(true);
     }
 
     [HttpGet("{idJ}")]
