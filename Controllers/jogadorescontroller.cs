@@ -12,8 +12,14 @@ public class JogadoresController : ControllerBase
 
     [HttpGet]
     public ActionResult<bool> Get(){
-        addJogadores();
-        return true;
+        if(listaJogadores.Count == 0){
+            addJogadores();
+            return Ok(true);
+        }
+        else{
+            return NotFound(false);
+        }
+            
     } 
 
     [HttpPost]
