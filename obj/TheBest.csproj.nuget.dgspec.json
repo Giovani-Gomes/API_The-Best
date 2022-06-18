@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj": {}
+    "D:\\API_The-BEst\\API\\TheBest.csproj": {}
   },
   "projects": {
-    "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj": {
+    "D:\\API_The-BEst\\API\\TheBest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj",
+        "projectUniqueName": "D:\\API_The-BEst\\API\\TheBest.csproj",
         "projectName": "TheBest",
-        "projectPath": "/home/giovani/Documentos/GitHub/API_The-BEst/TheBest.csproj",
-        "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/home/giovani/Documentos/GitHub/API_The-BEst/obj/",
+        "projectPath": "D:\\API_The-BEst\\API\\TheBest.csproj",
+        "packagesPath": "C:\\Users\\al3006247\\.nuget\\packages\\",
+        "outputPath": "D:\\API_The-BEst\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\al3006247\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

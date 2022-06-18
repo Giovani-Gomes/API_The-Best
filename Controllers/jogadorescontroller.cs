@@ -1,45 +1,41 @@
 using Microsoft.AspNetCore.Mvc;
+using thebest;
+using Votacao;
+using Vote;
 
-namespace TheBest.Controllers;
+namespace thebest.Controllers;
+
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/thebest/")]
 
 public class JogadoresController : ControllerBase
-{   
-    
+{
+    private static int countId = 1;
     private static List<Jogadores> listaJogadores = new List<Jogadores>();
-
-    [HttpGet]
-    public ActionResult<bool> Get(){
-        if(listaJogadores.Count == 0){
-            addJogadores();
-            return Ok(true);
-        }
-        else{
-            return NotFound(false);
-        }
-            
-    } 
+    //private static List<Votos> listaVotos = new List<Votos>();
+    private static List<Votos> listaPublicoGeral = new List<Votos>();
+    private static List<Votos> listaTecnicos = new List<Votos>();
+    private static List<Votos> listaJornalistas = new List<Votos>();
+    private static List<Votos> listaCapitaes = new List<Votos>();
 
     [HttpPost]
-    public ActionResult<bool> createJogador(Jogadores jogadores){
-         if(jogadores== null){
-            return StatusCode(204," Valores inválidos! ");
-        }
-        else if(jogadores.Nome == null || jogadores.Nome == "" || jogadores.Clube == null || jogadores.Clube == ""|| jogadores.Nacionalidade == null || jogadores.Nacionalidade == ""|| jogadores.Idade == null ||jogadores.Idade <= 18 ){
-            return StatusCode(204, "É necessário informar Todos os campos corretamente");
-        }
-    for (int i = 1; i == 10; i++){
-        if (listaJogadores[i] == null || i != 10){
-            jogadores.IdJ = i;
-            listaJogadores.Add(jogadores);   
-        }else{
-            return StatusCode(204,"Lista de jogadores cheia");
-        }
-    }
+    public ActionResult<int> createJogador(Jogadores jogadores){
+        int Size = listaJogadores.Count;
+    if(Size >= 10){
+
+        return StatusCode(500, "Lista Cheia");
+
+        }else if(jogadores.Nome == "" || jogadores.Idade < 18 || jogadores.Nacionalidade == "" || jogadores.Clube == ""){
+            return StatusCode(500, "valores invalidos");
+    }else{
+
+        jogadores.IdJ = countId++;
+        jogadores.QuantidadeDeVotos = 0;
+        listaJogadores.Add(jogadores);
         
-        return Ok(true);
+        return jogadores.IdJ;
+    }
     }
 
     [HttpGet("{idJ}")]
@@ -58,7 +54,7 @@ public class JogadoresController : ControllerBase
         
         if(aux == null)
         {
-            return NotFound("Jogador não existente");
+            return StatusCode(500, "Jogador não existente");
         }
 
         return Ok(aux);
@@ -78,7 +74,7 @@ public class JogadoresController : ControllerBase
             jogadorOld.Nome = jogadores.Nome;
         }
 
-        if(jogadores.Idade != null)
+        if(jogadores.Idade >= 18)
         {
             jogadorOld.Idade = jogadores.Idade;
         }
@@ -123,33 +119,63 @@ public class JogadoresController : ControllerBase
         return listaJogadores;
     }
 
-    private void addJogadores()
-    {
-        
-            listaJogadores.Add(new Jogadores(1, "Kevin De Bruyne", 30,"Manchester City","Belga"));
-            listaJogadores.Add(new Jogadores(2, "Neymar", 30, "Paris Saint-Germain", "Brasileiro"));
-            listaJogadores.Add(new Jogadores(3, " Cristiano Ronaldo", 37,"Manchester United","Português"));
-            listaJogadores.Add(new Jogadores(4, " Jorginho", 30,"Chelsea","Brasileiro"));
-            listaJogadores.Add(new Jogadores(5, " Kerim Benzema", 34,"Real Madrid","Francês"));
-            listaJogadores.Add(new Jogadores(6, " Kylian Mbappé", 23,"Paris Saint-Germain","Francês"));
-            listaJogadores.Add(new Jogadores(7, " Lionel Messi", 34,"Paris Saint-Germain","Argentino"));
-            listaJogadores.Add(new Jogadores(8, " Mohamed Salah", 29,"Liverpool","Egípcio"));
-            listaJogadores.Add(new Jogadores(9, " N'Golo Kanté", 31,"Chelsea","Francês"));
-            listaJogadores.Add(new Jogadores(10, " Robert Lewandowski", 33,"Bayern de Munique","Polonês"));
 
-    }
+    
 
     private Jogadores getJogadorById(int idJ)
     {
-        foreach(Jogadores j in listaJogadores)
+        foreach(Jogadores jogador in listaJogadores)
         {
-            if(j.IdJ == idJ)
+            if(jogador.IdJ == idJ)
             {
-                return j;
+                return jogador;
             }
         }
 
         return null;
+    }
+
+    [HttpPatch("{idVo}/{grupo}")]
+    public ActionResult<int> Votar(Votos votos, Votantes votantes, int voto1, int voto2, int voto3, int idVo, int id, string grupo){
+        int PositionPG = listaPublicoGeral.Count;
+        int PositionT = listaTecnicos.Count;
+        int PositionJ = listaJornalistas.Count;
+        int PositionC = listaCapitaes.Count;
+        
+
+        if(votantes.Grupo == null || votantes.Grupo == ""){
+            return 96;
+
+        }
+
+        if(PositionPG < 10 && votantes.Grupo == "publicogeral"){
+            idV = votantes.Id; 
+            listaPublicoGeral.Add(votos);
+            return PositionPG;
+
+        }if(PositionT < 10 && votantes.Grupo == "tecnico"){
+            listaTecnicos.Add(votos);
+            return PositionT;
+
+        }if(PositionJ < 10 && votantes.Grupo == "jornalista"){
+            listaJornalistas.Add(votos);
+            return PositionJ;
+
+        }if(PositionC < 10 && votantes.Grupo == "capitao"){
+            listaCapitaes.Add(votos);
+            return PositionC;
+
+        }
+        else{
+            
+            return 69;
+        }
+    }
+
+    [HttpGet("LP")]
+    public ActionResult<List<Votos>> getLP()
+    {
+        return listaPublicoGeral;
     }
 
 
