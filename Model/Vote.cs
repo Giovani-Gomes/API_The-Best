@@ -15,9 +15,9 @@ public class Votos
     public int IdV {get; set;   }
 
     public int Voto1 { get; set; }
-    
+
     public int Voto2 { get; set; }
-    
+
     public int Voto3 { get; set; }
 
 

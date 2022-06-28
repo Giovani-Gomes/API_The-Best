@@ -208,7 +208,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\al3006247\\.nuget\\packages\\": {}
+    "C:\\Users\\yansb\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -216,11 +216,11 @@
       "projectUniqueName": "D:\\API_The-BEst\\API\\TheBest.csproj",
       "projectName": "TheBest",
       "projectPath": "D:\\API_The-BEst\\API\\TheBest.csproj",
-      "packagesPath": "C:\\Users\\al3006247\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\yansb\\.nuget\\packages\\",
       "outputPath": "D:\\API_The-BEst\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\al3006247\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\yansb\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -267,7 +267,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

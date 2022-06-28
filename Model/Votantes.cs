@@ -5,13 +5,13 @@ namespace Votacao;
 
 public class Votantes
 {
-    public Votantes(int idVo, string grupo){
-        Idvo = idVo;
+    public Votantes(int id, string grupo){
+        Id = id;
         Grupo = grupo;
        
     }
 
-    public int Idvo { get; set; }
+    public int Id { get; set; }
 
     public string? Grupo { get; set; }
  
