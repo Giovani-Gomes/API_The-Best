@@ -169,7 +169,7 @@ public class JogadoresController : ControllerBase
             return StatusCode(500, "votos iguais");
         }
 
-        if(PositionPG < 10 && grupo == "publicogeral"){
+        if(PositionPG < 10 && string.Equals(grupo, "publicogeral")){
             votos.IdV = id; 
             listaPublicoGeral.Add(votos);
             return PositionPG;
